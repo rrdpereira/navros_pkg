@@ -1,10 +1,7 @@
 <?xml version="1.0"?>
-
 <launch>
-
     <!-- run pointcloud_to_laserscan node -->
     <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
-
         <remap from="cloud_in" to="/kinect/depth/points"/>
         <remap from="scan" to="/kinect/scan"/>
         <rosparam>
@@ -18,7 +15,7 @@
             angle_increment: 0.0087 # M_PI/360.0
             scan_time: 0.3333
             range_min: 0.45
-            range_max: 4.0
+            range_max: 5.0
             use_inf: true
             inf_epsilon: 1.0
 
@@ -28,7 +25,5 @@
             # 2->inf : Parallelism level
             concurrency_level: 1
         </rosparam>
-
     </node>
-
 </launch>

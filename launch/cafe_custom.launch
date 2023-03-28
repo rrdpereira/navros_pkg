@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-	
-	 <!-- Launch custom world Gazebo  -->
+	<!-- Launch custom world Gazebo  -->
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 		<arg name="world_name" default="$(find navros_pkg)/worlds/cafe_custom.world"/>
 		<arg name="paused" value="false"/>
 		<arg name="gui" value="true"/>
 	</include>
-
 	<!-- Launch the car -->
-	<include file="$(find navros_pkg)/launch/urdf_gazebo_view.launch" />
-
+	<include file="$(find navros_pkg)/launch/urdf_gazebo_view.launch"/>
+	<!-- <include file="$(find navros_pkg)/launch/pctl.launch"/> -->
+	<include file="$(find navros_pkg)/launch/gmapping.launch"/>
+	<include file="$(find navros_pkg)/launch/octomap.launch"/>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map_broadcaster" args="0 0 0 0 0 0 world map"/>
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find navros_pkg)/rviz/octomap.rviz"/>
+	<node name="teleop_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" args="cmd_vel:=/cmd_vel" output="screen">
+		<param name="speed" value="0.5"/>
+		<param name="turn" value="0.5"/>
+	</node>
 </launch>
