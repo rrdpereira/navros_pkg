@@ -17,6 +17,6 @@
 	</node>
 
 	<!-- Get laser scan readings -->
-	<include file="$(find navros_pkg)/launch/pctl.launch" />
+	<!-- <include file="$(find navros_pkg)/launch/pctl.launch" /> -->
 
 </launch>

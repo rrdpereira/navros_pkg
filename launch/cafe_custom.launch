@@ -9,6 +9,7 @@
 	<!-- Launch the car -->
 	<include file="$(find navros_pkg)/launch/urdf_gazebo_view.launch"/>
 	<!-- <include file="$(find navros_pkg)/launch/pctl.launch"/> -->
+	<include file="$(find pc2l)/launch/start_scan_kinect.launch"/>
 	<include file="$(find navros_pkg)/launch/gmapping.launch"/>
 	<include file="$(find navros_pkg)/launch/octomap.launch"/>
 	<node pkg="tf2_ros" type="static_transform_publisher" name="world_to_map_broadcaster" args="0 0 0 0 0 0 world map"/>
